@@ -1,4 +1,4 @@
-module Estrg 
+module Estrg
   ( run
   ) where
 

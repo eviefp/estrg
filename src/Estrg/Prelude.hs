@@ -4,7 +4,7 @@ module Estrg.Prelude
   , tail
   ) where
 
-import Prelude as P (IO, putStrLn, Maybe(..))
+import Prelude as P (IO, Maybe (..), putStrLn)
 
 head :: forall a. [a] -> Maybe a
 head = \case
@@ -14,4 +14,4 @@ head = \case
 tail :: forall a. [a] -> [a]
 tail = \case
   [] -> []
-  (_:xs) -> xs
+  (_ : xs) -> xs

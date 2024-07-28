@@ -1,7 +1,7 @@
 module Main where
 
-import Estrg.Prelude
 import qualified Estrg
+import Estrg.Prelude
 
 main :: IO ()
 main = Estrg.run

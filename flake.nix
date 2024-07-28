@@ -21,18 +21,19 @@
           programs = {
             nixpkgs-fmt.enable = true;
             fourmolu.enable = true;
-            fourmolu.package = pkgs.haskellPackages.fourmolu;
+            fourmolu.package = pkgs.haskell.packages.ghc966.fourmolu;
           };
         };
         treefmt = (treefmt-nix.lib.evalModule pkgs treefmt-config).config.build;
       in
       {
+        formatter = treefmt.wrapper;
         packages = {
-          default = pkgs.haskell.packages.ghc963.callCabal2nix "ect" ./. { };
+          default = pkgs.haskell.packages.ghc966.callCabal2nix "ect" ./. { };
         };
         checks = {
           fmt = treefmt.check self;
-          hlint = pkgs.runCommand "hlint" { buildInputs = [ pkgs.haskell.packages.ghc963.hlint ]; } ''
+          hlint = pkgs.runCommand "hlint" { buildInputs = [ pkgs.haskell.packages.ghc966.hlint ]; } ''
             cd ${./.}
             hlint src test app
             touch $out
@@ -43,16 +44,16 @@
             buildInputs = with pkgs; [
               treefmt.wrapper
               ghciwatch
-              haskellPackages.fourmolu
-              haskell.compiler.ghc963
-              haskell.packages.ghc963.cabal-install
-              haskell.packages.ghc963.cabal2nix
-              haskell.packages.ghc963.hlint
-              (haskell-language-server.override
-                {
-                  dynamic = true;
-                  supportedFormatters = [ "fourmolu" ];
-                })
+              haskell.compiler.ghc966
+              haskell.packages.ghc966.cabal-install
+              haskell.packages.ghc966.fourmolu
+              haskell.packages.ghc966.cabal2nix
+              haskell.packages.ghc966.hlint
+              (haskell-language-server.override {
+                supportedGhcVersions = [ "966" ];
+                dynamic = true;
+                supportedFormatters = [ "fourmolu" ];
+              })
             ];
           };
         };
