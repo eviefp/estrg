@@ -16,8 +16,16 @@ extra-doc-files:    CHANGELOG.md
 common warnings
     ghc-options: -Wall
 
+common extensions
+    default-extensions:
+      LambdaCase
+      NoImplicitPrelude
+      RankNTypes
+      ScopedTypeVariables
+
 library
     import:           warnings
+                    , extensions
     exposed-modules:  Estrg
     -- other-modules:
     -- other-extensions:
@@ -27,6 +35,7 @@ library
 
 executable estrg
     import:           warnings
+                    , extensions
     main-is:          Main.hs
     -- other-modules:
     -- other-extensions:
@@ -39,6 +48,7 @@ executable estrg
 
 test-suite estrg-test
     import:           warnings
+                    , extensions
     default-language: Haskell2010
     -- other-modules:
     -- other-extensions:
