@@ -11,16 +11,30 @@ module Estrg.Prelude
   , identity
   ) where
 
-import Prelude as P ((/), Double, IO, Maybe (..), putStrLn, Monad(..), pure, ($), (.), print, Show(..), const, Int)
+import Prelude as P
+  ( Double
+  , IO
+  , Int
+  , Maybe (..)
+  , Monad (..)
+  , Show (..)
+  , const
+  , print
+  , pure
+  , putStrLn
+  , ($)
+  , (.)
+  , (/)
+  )
 
 import Control.Concurrent as Concurrent (threadDelay)
 import Control.Monad as Monad (forever)
 import Data.Functor as Functor (($>), (<$))
 
-import GHC.Real as Real (realToFrac, floor)
+import GHC.Real as Real (floor, realToFrac)
 
-import Data.Time.Clock as Time (getCurrentTime, UTCTime, diffUTCTime, nominalDiffTimeToSeconds)
-import Prettyprinter as Pretty (pretty, Pretty)
+import Data.Time.Clock as Time (UTCTime, diffUTCTime, getCurrentTime, nominalDiffTimeToSeconds)
+import Prettyprinter as Pretty (Pretty, pretty)
 
 head :: forall a. [a] -> Maybe a
 head = \case
