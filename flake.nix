@@ -42,6 +42,7 @@
         devShells = {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
+              hello
               treefmt.wrapper
               ghciwatch
               haskell.compiler.ghc966
