@@ -24,6 +24,7 @@
             fourmolu.package = pkgs.haskell.packages.ghc966.fourmolu;
           };
         };
+        ifd = import ./ifd.nix { inherit pkgs; };
         treefmt = (treefmt-nix.lib.evalModule pkgs treefmt-config).config.build;
       in
       {
@@ -42,7 +43,7 @@
         devShells = {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
-              hello
+              ifd
               treefmt.wrapper
               ghciwatch
               haskell.compiler.ghc966
