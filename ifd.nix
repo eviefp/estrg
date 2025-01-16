@@ -2,8 +2,8 @@
 let
   ifd = pkgs.runCommand "generate-nix-expr" { } ''
     mkdir $out
-    echo "Pausing for 300s"
-    sleep 300
+    echo "Pausing for 30s"
+    sleep 30
     echo "Generating Nix expression..."
 
     cat <<EOF > $out/generated-nix-expr.nix
