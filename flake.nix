@@ -44,7 +44,7 @@
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
               ifd
-              nix-tree
+              gping
               treefmt.wrapper
               ghciwatch
               haskell.compiler.ghc966
