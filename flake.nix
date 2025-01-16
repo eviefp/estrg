@@ -44,7 +44,7 @@
           default = pkgs.mkShell {
             buildInputs = with pkgs; [
               ifd
-              gping
+              choose
               treefmt.wrapper
               ghciwatch
               haskell.compiler.ghc966
